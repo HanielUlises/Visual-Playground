@@ -7,10 +7,13 @@ canvas.height = window.innerHeight;
 // Set of atoms displayed
 let set = [];
 
+const counterElement = document.getElementById("counter");
+
 canvas.addEventListener('click', (e) => {
     for(let i = 0; i < 20; i++){
         set.push(new Atom(e.clientX, e.clientY));
     }
+    updateCounter();
 })
 
 const animate = () => {
@@ -57,4 +60,8 @@ class Atom {
         ctx.fillStyle = this.color;
         ctx.fill();
     }
+}
+
+function updateCounter() {
+    counterElement.textContent = `Atoms: ${set.length}`;
 }
