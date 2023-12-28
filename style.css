@@ -1,3 +1,7 @@
+body{
+    background-color: black;
+}
+
 #canvas-1{
     position: absolute;
     top: 0;

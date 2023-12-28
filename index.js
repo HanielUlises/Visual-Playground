@@ -21,8 +21,9 @@ const animate = () => {
         atom.update();
 
         if (atom.x < 0 || atom.x > canvas.width || atom.y < 0 || atom.y > canvas.height) {
-            set.splice(index, 1);
+            atom.checkBoundaries();
         }
+
     })
 
     requestAnimationFrame(animate);
@@ -31,22 +32,29 @@ const animate = () => {
 animate();
 
 class Atom {
-    constructor(x, y){
+    constructor (x, y){
         this.x = x;
         this.y = y;
         this.radius = Math.random() * 8 + 2;
         this.speedX = Math.random() * 4 - 2;
         this.speedY = Math.random() * 4 - 2;
+        this.color = "white";
     }
 
-    update(){
+    update (){
         this.x += this.speedX;
         this.y += this.speedY;
     }
 
-    draw(){
+    checkBoundaries (){
+        this.speedX *= - 1;
+        this.speedY *= - 1;
+    }
+
+    draw (){
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
         ctx.fill();
     }
 }
