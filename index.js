@@ -107,6 +107,7 @@ class Atom {
     }
 }
 
+x
 function updateCounter() {
     counterElement.textContent = `Atoms: ${set.length}`;
 }
